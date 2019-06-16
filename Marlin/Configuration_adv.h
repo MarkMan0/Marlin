@@ -1644,7 +1644,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT     900
+    #define Z_CURRENT     650
     #define Z_MICROSTEPS    4   //reduce resolution for torque
     #define Z_RSENSE     0.11
   #endif
