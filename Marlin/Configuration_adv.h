@@ -1196,7 +1196,7 @@
 #define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 0.0    // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0.58    // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
 #endif
 
@@ -1274,7 +1274,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-//#define MINIMUM_STEPPER_DIR_DELAY 650
+#define MINIMUM_STEPPER_DIR_DELAY 20
 
 /**
  * Minimum stepper driver pulse width (in µs)
@@ -1287,7 +1287,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-//#define MINIMUM_STEPPER_PULSE 2
+#define MINIMUM_STEPPER_PULSE 1
 
 /**
  * Maximum stepping rate (in Hz) the stepper driver allows
@@ -1301,7 +1301,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-//#define MAXIMUM_STEPPER_RATE 250000
+#define MAXIMUM_STEPPER_RATE 400000
 
 // @section temperature
 
@@ -1620,7 +1620,7 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT     600  // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT     500  // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_MICROSTEPS   16  // 0..256
     #define X_RSENSE     0.11
   #endif
@@ -1632,7 +1632,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT     800
+    #define Y_CURRENT     500
     #define Y_MICROSTEPS   16
     #define Y_RSENSE     0.11
   #endif
@@ -1644,7 +1644,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT     600
+    #define Z_CURRENT     500
     #define Z_MICROSTEPS   16
     #define Z_RSENSE     0.11
   #endif
@@ -1662,7 +1662,7 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT    800
+    #define E0_CURRENT    500
     #define E0_MICROSTEPS  16
     #define E0_RSENSE    0.11
   #endif

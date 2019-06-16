@@ -532,7 +532,7 @@
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 100
+#define EXTRUDE_MINTEMP 10
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
@@ -558,9 +558,9 @@
  * details can be tuned in Configuration_adv.h
  */
 
-#define THERMAL_PROTECTION_HOTENDS // Enable thermal protection for all extruders
-#define THERMAL_PROTECTION_BED     // Enable thermal protection for the heated bed
-#define THERMAL_PROTECTION_CHAMBER // Enable thermal protection for the heated chamber
+//#define THERMAL_PROTECTION_HOTENDS // Enable thermal protection for all extruders
+//#define THERMAL_PROTECTION_BED     // Enable thermal protection for the heated bed
+//#define THERMAL_PROTECTION_CHAMBER // Enable thermal protection for the heated chamber
 
 //===========================================================================
 //============================= Mechanical Settings =========================
@@ -715,7 +715,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 7000, 7000, 100, 7000 }
+#define DEFAULT_MAX_ACCELERATION      { 700, 700, 10, 700 }
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -751,7 +751,7 @@
   #define DEFAULT_ZJERK  5
 #endif
 
-#define DEFAULT_EJERK    5.0  // May be used by Linear Advance
+#define DEFAULT_EJERK    1.0  // May be used by Linear Advance
 
 /**
  * S-Curve Acceleration
@@ -761,7 +761,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-#define S_CURVE_ACCELERATION
+//#define S_CURVE_ACCELERATION
 
 //===========================================================================
 //============================= Z Probe Options =============================
