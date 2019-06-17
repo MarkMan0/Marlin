@@ -915,7 +915,7 @@
    * an option on the LCD screen to continue the print from the last-known
    * point in the file.
    */
-  //#define POWER_LOSS_RECOVERY
+  #define POWER_LOSS_RECOVERY
   #if ENABLED(POWER_LOSS_RECOVERY)
     //#define POWER_LOSS_PIN         44 // Pin to detect power loss (optional)
     //#define POWER_LOSS_STATE     HIGH // State of pin indicating power loss
@@ -1632,7 +1632,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT     600
+    #define Y_CURRENT     550
     #define Y_MICROSTEPS   16
     #define Y_RSENSE     0.11
   #endif
@@ -1644,7 +1644,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT     650
+    #define Z_CURRENT     400
     #define Z_MICROSTEPS    4   //reduce resolution for torque
     #define Z_RSENSE     0.11
   #endif
@@ -1662,7 +1662,7 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT    850
+    #define E0_CURRENT    750
     #define E0_MICROSTEPS  16
     #define E0_RSENSE    0.11
   #endif
@@ -1785,11 +1785,11 @@
    * STEALTHCHOP_(XY|Z|E) must be enabled to use HYBRID_THRESHOLD.
    * M913 X/Y/Z/E to live tune the setting
    */
-  //#define HYBRID_THRESHOLD
+  #define HYBRID_THRESHOLD
 
-  #define X_HYBRID_THRESHOLD     100  // [mm/s]
+  #define X_HYBRID_THRESHOLD     90  // [mm/s]
   #define X2_HYBRID_THRESHOLD    100
-  #define Y_HYBRID_THRESHOLD     100
+  #define Y_HYBRID_THRESHOLD     90
   #define Y2_HYBRID_THRESHOLD    100
   #define Z_HYBRID_THRESHOLD      10
   #define Z2_HYBRID_THRESHOLD      3
