@@ -715,7 +715,7 @@
  * Override with M201
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 1500, 1500, 500, 5000 }
+#define DEFAULT_MAX_ACCELERATION      { 2000, 1500, 200, 7000 }
 
 /**
  * Default Acceleration (change/s) change = mm/s
@@ -746,12 +746,12 @@
  * value set here, it may happen instantaneously.
  */
 #if DISABLED(JUNCTION_DEVIATION)
-  #define DEFAULT_XJERK 3
-  #define DEFAULT_YJERK 3
-  #define DEFAULT_ZJERK 0.5
+  #define DEFAULT_XJERK 5
+  #define DEFAULT_YJERK 4
+  #define DEFAULT_ZJERK 0.3
 #endif
 
-#define DEFAULT_EJERK    1.0  // May be used by Linear Advance
+#define DEFAULT_EJERK    10  // May be used by Linear Advance
 
 /**
  * S-Curve Acceleration
@@ -884,7 +884,7 @@
  */
 #define X_PROBE_OFFSET_FROM_EXTRUDER -45  // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER -12  // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER -1.14   // Z offset: -below +above  [the nozzle]
+#define Z_PROBE_OFFSET_FROM_EXTRUDER 1.95   // Z offset: -below +above  [the nozzle]
 
 // Certain types of probes need to stay away from edges
 #define MIN_PROBE_EDGE 20
@@ -1008,12 +1008,12 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 230
-#define Y_BED_SIZE 230
+#define X_BED_SIZE 235
+#define Y_BED_SIZE 235
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS 0
-#define Y_MIN_POS 0
+#define X_MIN_POS -3
+#define Y_MIN_POS -11
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
@@ -1432,7 +1432,7 @@
  *    P1  Raise the nozzle always to Z-park height.
  *    P2  Raise the nozzle by Z-park amount, limited to Z_MAX_POS.
  */
-//#define NOZZLE_PARK_FEATURE
+#define NOZZLE_PARK_FEATURE
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }

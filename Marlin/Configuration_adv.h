@@ -759,7 +759,7 @@
  * vibration and surface artifacts. The algorithm adapts to provide the best possible step smoothing at the
  * lowest stepping frequencies.
  */
-//#define ADAPTIVE_STEP_SMOOTHING
+#define ADAPTIVE_STEP_SMOOTHING
 
 /**
  * Custom Microstepping
@@ -969,10 +969,10 @@
   //#define LONG_FILENAME_HOST_SUPPORT
 
   // Enable this option to scroll long filenames in the SD card menu
-  //#define SCROLL_LONG_FILENAMES
+  #define SCROLL_LONG_FILENAMES
 
   // Leave the heaters on after Stop Print (not recommended!)
-  //#define SD_ABORT_NO_COOLDOWN
+  #define SD_ABORT_NO_COOLDOWN
 
   /**
    * This option allows you to abort SD printing when any endstop is triggered.
@@ -1462,7 +1462,7 @@
  * Requires NOZZLE_PARK_FEATURE.
  * This feature is required for the default FILAMENT_RUNOUT_SCRIPT.
  */
-//#define ADVANCED_PAUSE_FEATURE
+#define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
   #define PAUSE_PARK_RETRACT_FEEDRATE         60  // (mm/s) Initial retract feedrate.
   #define PAUSE_PARK_RETRACT_LENGTH            2  // (mm) Initial retract.
@@ -1620,7 +1620,7 @@
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
   #if AXIS_IS_TMC(X)
-    #define X_CURRENT     350  // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT     600  // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_MICROSTEPS   16  // 0..256
     #define X_RSENSE     0.11
   #endif
@@ -1632,7 +1632,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y)
-    #define Y_CURRENT     550
+    #define Y_CURRENT     800
     #define Y_MICROSTEPS   16
     #define Y_RSENSE     0.11
   #endif
@@ -1644,7 +1644,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z)
-    #define Z_CURRENT     400
+    #define Z_CURRENT     500
     #define Z_MICROSTEPS    4   //reduce resolution for torque
     #define Z_RSENSE     0.11
   #endif
@@ -1825,7 +1825,7 @@
   //#define SENSORLESS_PROBING // TMC2130 only
 
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
-    #define X_STALL_SENSITIVITY  6
+    #define X_STALL_SENSITIVITY  13
     #define Y_STALL_SENSITIVITY  5
     //#define Z_STALL_SENSITIVITY  8
   #endif
