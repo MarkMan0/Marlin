@@ -1,6 +1,6 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (C) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2019 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@
 
 #include "../../inc/MarlinConfig.h"
 
-#if HAS_GRAPHICAL_LCD
+#if HAS_GRAPHICAL_LCD && ENABLED(FORCE_SOFT_SPI)
 
 #include "HAL.h"
 #include <U8glib.h>
