@@ -1817,7 +1817,7 @@ bool Planner::_populate_block(block_t * const block, bool split_move,
   }
 
   block->steps[E_AXIS] = esteps;
-  block->step_event_count = MAX(block->steps[A_AXIS], block->steps[B_AXIS], block->steps[C_AXIS], esteps);
+  block->step_event_count = MAX(MAX(block->steps[A_AXIS], block->steps[B_AXIS]), MAX(block->steps[C_AXIS], esteps));
 
   // Bail if this is a zero-length block
   if (block->step_event_count < MIN_STEPS_PER_SEGMENT) return false;
