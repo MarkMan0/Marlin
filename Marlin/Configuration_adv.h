@@ -1863,7 +1863,7 @@
   //#define SENSORLESS_PROBING // StallGuard capable drivers only
 
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
-    #define X_STALL_SENSITIVITY  13
+    #define X_STALL_SENSITIVITY  8
     #define Y_STALL_SENSITIVITY  5
     //#define Z_STALL_SENSITIVITY  8
   #endif
