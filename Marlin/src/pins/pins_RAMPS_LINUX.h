@@ -49,6 +49,8 @@
   #define BOARD_NAME "RAMPS 1.4"
 #endif
 
+#define E2END 0xFFF // 4KB
+
 #define IS_RAMPS_EFB
 
 //
@@ -139,7 +141,7 @@
 //
 // Augmentation for auto-assigning RAMPS plugs
 //
-#if DISABLED(IS_RAMPS_EEB, IS_RAMPS_EEF, IS_RAMPS_EFB, IS_RAMPS_EFF, IS_RAMPS_SF) && !PIN_EXISTS(MOSFET_D)
+#if NONE(IS_RAMPS_EEB, IS_RAMPS_EEF, IS_RAMPS_EFB, IS_RAMPS_EFF, IS_RAMPS_SF) && !PIN_EXISTS(MOSFET_D)
   #if HOTENDS > 1
     #if TEMP_SENSOR_BED
       #define IS_RAMPS_EEB
@@ -269,7 +271,7 @@
   #endif
 #endif
 
-#if HAS_DRIVER(TMC2208) || HAS_DRIVER(TMC2209)
+#if HAS_TMC220x
   /**
    * TMC2208/TMC2209 stepper drivers
    *
