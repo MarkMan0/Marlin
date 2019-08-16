@@ -455,9 +455,9 @@
 #define BED_MAXTEMP      1500
 
 //===========================================================================
-//============================= PID Settings ================================
-//===========================================================================
-// PID Tuning Guide here: http://reprap.org/wiki/PID_Tuning
+//===========================13.58 Settings ================================
+//============================0.94===========================================
+// PID Tuning Guide here: http:49.2eprap.org/wiki/PID_Tuning
 
 // Comment the following line to disable PID and enable bang-bang.
 #define PIDTEMP
@@ -478,9 +478,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Ultimaker
-  #define DEFAULT_Kp 22.2
-  #define DEFAULT_Ki 1.08
-  #define DEFAULT_Kd 114
+  #define DEFAULT_Kp 13.58
+  #define DEFAULT_Ki 0.94
+  #define DEFAULT_Kd 49.2
 
   // MakerGear
   //#define DEFAULT_Kp 7.0
@@ -911,7 +911,7 @@
  */
 #define X_PROBE_OFFSET_FROM_EXTRUDER -45  // X offset: -left  +right  [of the nozzle]
 #define Y_PROBE_OFFSET_FROM_EXTRUDER -12  // Y offset: -front +behind [the nozzle]
-#define Z_PROBE_OFFSET_FROM_EXTRUDER 0   // Z offset: -below +above  [the nozzle]
+#define Z_PROBE_OFFSET_FROM_EXTRUDER -2.1   // Z offset: -below +above  [the nozzle]
 
 // Certain types of probes need to stay away from edges
 #define MIN_PROBE_EDGE 20
@@ -1450,13 +1450,13 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 210
-#define PREHEAT_1_TEMP_BED     70
+#define PREHEAT_1_TEMP_HOTEND 220
+#define PREHEAT_1_TEMP_BED     60
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "PETG"
 #define PREHEAT_2_TEMP_HOTEND 260
-#define PREHEAT_2_TEMP_BED    70
+#define PREHEAT_2_TEMP_BED    60
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
 /**

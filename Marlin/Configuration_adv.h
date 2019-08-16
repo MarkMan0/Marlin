@@ -1686,7 +1686,7 @@
   #endif
 
   #if AXIS_IS_TMC(E0)
-    #define E0_CURRENT    750
+    #define E0_CURRENT    900
     #define E0_MICROSTEPS  16
     #define E0_RSENSE    0.11
   #endif
@@ -1882,7 +1882,7 @@
   //#define SENSORLESS_PROBING // StallGuard capable drivers only
 
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
-    #define X_STALL_SENSITIVITY  8
+    #define X_STALL_SENSITIVITY  13
     #define Y_STALL_SENSITIVITY  5
     //#define Z_STALL_SENSITIVITY  8
     //#define SPI_ENDSTOPS              // TMC2130 only
