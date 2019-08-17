@@ -137,8 +137,8 @@
  * THERMAL_PROTECTION_HYSTERESIS and/or THERMAL_PROTECTION_PERIOD
  */
 #if ENABLED(THERMAL_PROTECTION_HOTENDS)
-  #define THERMAL_PROTECTION_PERIOD 40        // Seconds
-  #define THERMAL_PROTECTION_HYSTERESIS 4     // Degrees Celsius
+  #define THERMAL_PROTECTION_PERIOD 60        // Seconds
+  #define THERMAL_PROTECTION_HYSTERESIS 10     // Degrees Celsius
 
   //#define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
   #if BOTH(ADAPTIVE_FAN_SLOWING, PIDTEMP)
@@ -165,7 +165,7 @@
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
-  #define THERMAL_PROTECTION_BED_PERIOD 20    // Seconds
+  #define THERMAL_PROTECTION_BED_PERIOD 60    // Seconds
   #define THERMAL_PROTECTION_BED_HYSTERESIS 2 // Degrees Celsius
 
   /**
@@ -277,9 +277,9 @@
  * The fan will turn on automatically whenever any stepper is enabled
  * and turn off after a set period after all steppers are turned off.
  */
-//#define USE_CONTROLLER_FAN
+#define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
-  //#define CONTROLLER_FAN_PIN -1           // Set a custom pin for the controller fan
+  #define CONTROLLER_FAN_PIN P2_04           // Set a custom pin for the controller fan
   #define CONTROLLERFAN_SECS 60             // Duration in seconds for the fan to run after all motors are disabled
   #define CONTROLLERFAN_SPEED 255           // 255 == full speed
   //#define CONTROLLERFAN_SPEED_Z_ONLY 127  // Reduce noise on machines that keep Z enabled
@@ -867,7 +867,7 @@
 #define LCD_TIMEOUT_TO_STATUS 1500000
 
 // Add an 'M73' G-code to set the current percentage
-//#define LCD_SET_PROGRESS_MANUALLY
+#define LCD_SET_PROGRESS_MANUALLY
 
 #if HAS_CHARACTER_LCD && HAS_PRINT_PROGRESS
   //#define LCD_PROGRESS_BAR              // Show a progress bar on HD44780 LCDs for SD printing
@@ -1133,7 +1133,7 @@
   //#define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
   //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
   //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
-  //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
+  #define STATUS_HEAT_PERCENT       // Show heating in a progress bar
   //#define BOOT_MARLIN_LOGO_SMALL    // Show a smaller Marlin logo on the Boot Screen (saving 399 bytes of flash)
 
   // Frivolous Game Options
@@ -1342,7 +1342,7 @@
  *
  * Override the default value based on the driver type set in Configuration.h.
  */
-#define MINIMUM_STEPPER_DIR_DELAY 20
+#define MINIMUM_STEPPER_DIR_DELAY 40
 
 /**
  * Minimum stepper driver pulse width (in µs)

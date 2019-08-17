@@ -76,7 +76,7 @@
 #define STRING_CONFIG_H_AUTHOR "(MarkMan0)" // Who made the changes.
 #define SHOW_BOOTSCREEN
 #define STRING_SPLASH_LINE1 SHORT_BUILD_VERSION // will be shown during bootup in line 1
-#define STRING_SPLASH_LINE2 WEBSITE_URL         // will be shown during bootup in line 2
+#define STRING_SPLASH_LINE2 __DATE__ __TIME__        // will be shown during bootup in line 2
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -472,7 +472,7 @@
   //#define SLOW_PWM_HEATERS      // PWM with very low frequency (roughly 0.125Hz=8s) and minimum state time of approximately 1s useful for heaters driven by a relay
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
-  #define PID_FUNCTIONAL_RANGE 30 // If the temperature difference between the target temperature and the actual temperature
+  #define PID_FUNCTIONAL_RANGE 100 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
@@ -578,8 +578,8 @@
  * details can be tuned in Configuration_adv.h
  */
 
-//#define THERMAL_PROTECTION_HOTENDS // Enable thermal protection for all extruders
-//#define THERMAL_PROTECTION_BED     // Enable thermal protection for the heated bed
+#define THERMAL_PROTECTION_HOTENDS // Enable thermal protection for all extruders
+#define THERMAL_PROTECTION_BED     // Enable thermal protection for the heated bed
 //#define THERMAL_PROTECTION_CHAMBER // Enable thermal protection for the heated chamber
 
 //===========================================================================
@@ -758,9 +758,9 @@
  *   https://reprap.org/forum/read.php?1,739819
  *   http://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
-//#define JUNCTION_DEVIATION
+#define JUNCTION_DEVIATION
 #if ENABLED(JUNCTION_DEVIATION)
-  #define JUNCTION_DEVIATION_MM 0.02  // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.01  // (mm) Distance from real junction edge
 #endif
 
 /**
@@ -956,9 +956,9 @@
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
 #define Z_CLEARANCE_DEPLOY_PROBE   0 // Z Clearance for Deploy/Stow
-#define Z_CLEARANCE_BETWEEN_PROBES  5 // Z Clearance between probe points
-#define Z_CLEARANCE_MULTI_PROBE     5 // Z Clearance between multiple probes
-#define Z_AFTER_PROBING           5 // Z position after probing is done
+#define Z_CLEARANCE_BETWEEN_PROBES  3 // Z Clearance between probe points
+#define Z_CLEARANCE_MULTI_PROBE     3 // Z Clearance between multiple probes
+#define Z_AFTER_PROBING           3 // Z position after probing is done
 
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping
 
@@ -1185,12 +1185,12 @@
   // split up moves into short segments like a Delta. This follows the
   // contours of the bed more closely than edge-to-edge straight moves.
   #define SEGMENT_LEVELED_MOVES
-  #define LEVELED_SEGMENT_LENGTH 5.0 // (mm) Length of all segments (except the last one)
+  #define LEVELED_SEGMENT_LENGTH 3.0 // (mm) Length of all segments (except the last one)
 
   /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-  #define G26_MESH_VALIDATION
+  //#define G26_MESH_VALIDATION
   #if ENABLED(G26_MESH_VALIDATION)
     #define MESH_TEST_NOZZLE_SIZE    0.4  // (mm) Diameter of primary nozzle.
     #define MESH_TEST_LAYER_HEIGHT   0.2  // (mm) Default layer height for the G26 Mesh Validation Tool.
@@ -1295,7 +1295,7 @@
 #define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
-  #define LEVEL_CORNERS_INSET 20    // (mm) An inset for corner leveling
+  #define LEVEL_CORNERS_INSET 40    // (mm) An inset for corner leveling
   #define LEVEL_CORNERS_Z_HOP  4.0  // (mm) Move nozzle up before moving between corners
   #define LEVEL_CORNERS_HEIGHT 0.0  // (mm) Z height of nozzle at leveling points
   //#define LEVEL_CENTER_TOO        // Move to the center after the last corner
