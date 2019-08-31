@@ -148,7 +148,7 @@ void PrintJobRecovery::save(const bool force/*=false*/, const bool save_queue/*=
         || ELAPSED(ms, next_save_ms)
       #endif
       // Save if Z is above the last-saved position by some minimum height
-      || current_position[Z_AXIS] > info.current_position[Z_AXIS] + POWER_LOSS_MIN_Z_CHANGE
+      //|| current_position[Z_AXIS] > info.current_position[Z_AXIS] + POWER_LOSS_MIN_Z_CHANGE   //not needed when powerLoss pin enabled
     #endif
   ) {
 
