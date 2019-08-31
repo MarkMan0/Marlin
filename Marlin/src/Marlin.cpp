@@ -739,6 +739,21 @@ void idle(
   #if ENABLED(PRUSA_MMU2)
     mmu2.mmu_loop();
   #endif
+
+  #if PIN_EXISTS(POWER_LOSS)
+    if(recovery.enabled) {
+      const millis_t ms = millis();
+      if(ELAPSED(ms, recovery.next_save)) {
+        if(recovery.checkPower() == 0) {
+          //no power
+          //checkpower is an inline function, to avoid unnecessary overhead of function call to save()
+          recovery.save();
+        }
+        recovery.next_save = ms + recovery.save_interval;
+      }
+    }
+    
+  #endif
 }
 
 /**

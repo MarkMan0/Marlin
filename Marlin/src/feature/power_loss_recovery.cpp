@@ -37,6 +37,11 @@ SdFile PrintJobRecovery::file;
 job_recovery_info_t PrintJobRecovery::info;
 const char PrintJobRecovery::filename[5] = "/PLR";
 
+#if PIN_EXISTS(POWER_LOSS)
+  millis_t PrintJobRecovery::next_save = 0;
+  const millis_t PrintJobRecovery::save_interval = 50;
+#endif
+
 #include "../sd/cardreader.h"
 #include "../lcd/ultralcd.h"
 #include "../gcode/queue.h"
@@ -143,12 +148,13 @@ void PrintJobRecovery::save(const bool force/*=false*/, const bool save_queue/*=
     #if DISABLED(SAVE_EACH_CMD_MODE)      // Always save state when enabled
       #if PIN_EXISTS(POWER_LOSS)          // Save if power loss pin is triggered
         || READ(POWER_LOSS_PIN) == POWER_LOSS_STATE
+      #else
+        // Save if Z is above the last-saved position by some minimum height
+        || current_position[Z_AXIS] > info.current_position[Z_AXIS] + POWER_LOSS_MIN_Z_CHANGE   //not needed when powerLoss pin enabled
       #endif
       #if SAVE_INFO_INTERVAL_MS > 0       // Save if interval is elapsed
         || ELAPSED(ms, next_save_ms)
       #endif
-      // Save if Z is above the last-saved position by some minimum height
-      || current_position[Z_AXIS] > info.current_position[Z_AXIS] + POWER_LOSS_MIN_Z_CHANGE
     #endif
   ) {
 
