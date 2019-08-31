@@ -744,7 +744,11 @@ void idle(
     if(recovery.enabled) {
       const millis_t ms = millis();
       if(ELAPSED(ms, recovery.next_save)) {
-        recovery.save();
+        if(recovery.checkPower() == 0) {
+          //no power
+          //checkpower is an inline function, to avoid unnecessary overhead of function call to save()
+          recovery.save();
+        }
         recovery.next_save = ms + recovery.save_interval;
       }
     }
