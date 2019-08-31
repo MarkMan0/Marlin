@@ -37,6 +37,9 @@ SdFile PrintJobRecovery::file;
 job_recovery_info_t PrintJobRecovery::info;
 const char PrintJobRecovery::filename[5] = "/PLR";
 
+millis_t PrintJobRecovery::next_save = 0;
+const millis_t PrintJobRecovery::save_interval = 10;
+
 #include "../sd/cardreader.h"
 #include "../lcd/ultralcd.h"
 #include "../gcode/queue.h"

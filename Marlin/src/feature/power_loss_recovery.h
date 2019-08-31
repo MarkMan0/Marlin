@@ -112,6 +112,10 @@ class PrintJobRecovery {
     static SdFile file;
     static job_recovery_info_t info;
 
+    static millis_t next_save;
+    static const millis_t save_interval;
+  
+
     static void init();
 
     static inline void setup() {
