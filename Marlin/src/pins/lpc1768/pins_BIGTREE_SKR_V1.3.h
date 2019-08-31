@@ -33,7 +33,9 @@
 //
 // Servos
 //
-#define SERVO0_PIN         P2_00
+//#define SERVO0_PIN         P2_00
+
+#define PS_ON_PIN     P2_00
 
 //
 // Limit Switches
