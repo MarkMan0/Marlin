@@ -726,7 +726,7 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4[, E5]]]]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 150, 150, 50, 100 }
+#define DEFAULT_MAX_FEEDRATE          { 500, 500, 50, 100 }
 
 /**
  * Default Max Acceleration (change/s) change = mm/s
@@ -759,7 +759,7 @@
  */
 #define JUNCTION_DEVIATION
 #if ENABLED(JUNCTION_DEVIATION)
-  #define JUNCTION_DEVIATION_MM 0.01  // (mm) Distance from real junction edge
+  #define JUNCTION_DEVIATION_MM 0.06  // (mm) Distance from real junction edge
 #endif
 
 /**
@@ -776,7 +776,7 @@
   #define DEFAULT_ZJERK 0.3
 #endif
 
-#define DEFAULT_EJERK    10  // May be used by Linear Advance
+#define DEFAULT_EJERK    8  // May be used by Linear Advance
 
 /**
  * S-Curve Acceleration
