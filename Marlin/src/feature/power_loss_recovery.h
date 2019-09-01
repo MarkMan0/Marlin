@@ -147,8 +147,10 @@ class PrintJobRecovery {
 
     //checks whether the power loss pin indicates "has power" or "no power"
     //returns TRUE when THERE IS power
-    static inline bool checkPower(){ return (READ(POWER_LOSS_PIN) != POWER_LOSS_STATE); }
-
+    #if PIN_EXISTS(POWER_LOSS)
+      static inline bool checkPower(){ return (READ(POWER_LOSS_PIN) != POWER_LOSS_STATE); }
+    #endif
+    
     static void purge();
     static void load();
     static void save(const bool force=
