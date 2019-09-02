@@ -112,12 +112,6 @@ class PrintJobRecovery {
     static SdFile file;
     static job_recovery_info_t info;
 
-    #if PIN_EXISTS(POWER_LOSS)
-      //used only when power loss pin is defined
-      static millis_t next_save;   //the absolute time of the next check
-      static const millis_t save_interval;  //the time between checks
-    #endif
-
     static void init();
 
     static inline void setup() {
