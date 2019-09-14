@@ -43,6 +43,8 @@ void controllerfan_update() {
       #if HAS_HEATED_BED
         || thermalManager.temp_bed.soft_pwm_amount > 0
       #endif
+        || thermalManager.temp_hotend[0].target > 0    //check if extruder heater is on
+        || thermalManager.temp_hotend[0].soft_pwm_amount > 0
         #if HAS_X2_ENABLE
           || X2_ENABLE_READ() == X_ENABLE_ON
         #endif

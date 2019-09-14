@@ -146,6 +146,12 @@ class PrintJobRecovery {
     static inline void open(const bool read) { card.openJobRecoveryFile(read); }
     static inline void close() { file.close(); }
 
+    //checks whether the power loss pin indicates "has power" or "no power"
+    //returns TRUE when THERE IS power
+    #if PIN_EXISTS(POWER_LOSS)
+      static inline bool checkPower(){ return (READ(POWER_LOSS_PIN) != POWER_LOSS_STATE); }
+    #endif
+    
     static void purge();
     static void load();
     static void save(const bool force=

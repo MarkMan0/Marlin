@@ -750,6 +750,14 @@ void idle(
   #if ENABLED(POLL_JOG)
     joystick.inject_jog_moves();
   #endif
+  #if PIN_EXISTS(POWER_LOSS)
+    if(recovery.enabled && recovery.checkPower() == 0) {
+      //no power
+      //checkpower is an inline function, to avoid unnecessary overhead of function call to save()
+      recovery.save();
+    }
+    
+  #endif
 }
 
 /**
