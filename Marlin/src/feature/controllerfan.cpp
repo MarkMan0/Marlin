@@ -40,11 +40,12 @@ void controllerfan_update() {
 
     // If any of the drivers or the bed are enabled...
     if (xory || Z_ENABLE_READ() == Z_ENABLE_ON
-      #if HAS_HEATED_BED
-        || thermalManager.temp_bed.soft_pwm_amount > 0
-      #endif
-        || thermalManager.temp_hotend[0].target > 0    //check if extruder heater is on
-        || thermalManager.temp_hotend[0].soft_pwm_amount > 0
+        #if HAS_HEATED_BED
+          || thermalManager.temp_bed.soft_pwm_amount > 0
+        #endif
+        #if ENABLED(CONTROLLER_FAN_IS_EXTRUDER_1_FAN)
+          || thermalManager.temp_hotend[0].celsius > EXTRUDER_AUTO_FAN_TEMPERATURE    //check if extruder heater is on
+        #endif
         #if HAS_X2_ENABLE
           || X2_ENABLE_READ() == X_ENABLE_ON
         #endif
