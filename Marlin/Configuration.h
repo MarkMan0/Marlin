@@ -757,7 +757,7 @@
  *   https://reprap.org/forum/read.php?1,739819
  *   http://blog.kyneticcnc.com/2018/10/computing-junction-deviation-for-marlin.html
  */
-#define JUNCTION_DEVIATION
+//#define JUNCTION_DEVIATION
 #if ENABLED(JUNCTION_DEVIATION)
   #define JUNCTION_DEVIATION_MM 0.06  // (mm) Distance from real junction edge
 #endif
@@ -771,8 +771,8 @@
  * value set here, it may happen instantaneously.
  */
 #if DISABLED(JUNCTION_DEVIATION)
-  #define DEFAULT_XJERK 5
-  #define DEFAULT_YJERK 4
+  #define DEFAULT_XJERK 10
+  #define DEFAULT_YJERK 10
   #define DEFAULT_ZJERK 0.3
 #endif
 
