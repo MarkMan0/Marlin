@@ -299,10 +299,7 @@ class MenuItem_bool {
   } \
   screen_items = _thisItemNr
 
-#define END_MENU() \
-  } \
-  screen_items = _thisItemNr; \
-  UNUSED(_skipStatic)
+#define END_MENU() END_SCREEN(); UNUSED(_skipStatic)
 
 #if ENABLED(ENCODER_RATE_MULTIPLIER)
   #define ENCODER_RATE_MULTIPLY(F) (ui.encoderRateMultiplierEnabled = F)
@@ -365,12 +362,6 @@ class MenuItem_bool {
   ++_thisItemNr;                                          \
 } while(0)
 
-#define MENU_ITEM_ADDON_START(X) do{ \
-  if (ui.should_draw() && _menuLineNr == _thisItemNr - 1) { \
-    SETCURSOR(X, _lcdLineNr)
-
-#define MENU_ITEM_ADDON_END() } }while(0)
-
 #define STATIC_ITEM(LABEL, V...) STATIC_ITEM_P(GET_TEXT(LABEL), ##V)
 
 #define MENU_ITEM_P(TYPE, PLABEL, V...)       _MENU_ITEM_P(TYPE, false, PLABEL, ##V)
@@ -430,6 +421,10 @@ void _lcd_draw_homing();
 #if ANY(AUTO_BED_LEVELING_UBL, PID_AUTOTUNE_MENU, ADVANCED_PAUSE_FEATURE)
   void lcd_enqueue_one_now(const char * const cmd);
   void lcd_enqueue_one_now_P(PGM_P const cmd);
+#endif
+
+#if HAS_GRAPHICAL_LCD && EITHER(BABYSTEP_ZPROBE_GFX_OVERLAY, MESH_EDIT_GFX_OVERLAY)
+  void _lcd_zoffset_overlay_gfx(const float zvalue);
 #endif
 
 #if ENABLED(LEVEL_BED_CORNERS)
