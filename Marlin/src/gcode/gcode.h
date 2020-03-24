@@ -928,6 +928,7 @@ private:
     #if USE_SENSORLESS
       static void M914();
     #endif
+      static void M915();
   #endif
 
   #if HAS_L64XX
