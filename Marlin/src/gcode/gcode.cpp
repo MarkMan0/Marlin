@@ -801,7 +801,9 @@ void GcodeSuite::process_parsed_command(const bool no_ok/*=false*/) {
         #if USE_SENSORLESS
           case 914: M914(); break;                                // M914: Set StallGuard sensitivity.
         #endif
+        #if ENABLED(TMC_Z_CALIBRATION)
           case 915: M915(); break;
+        #endif
       #endif
 
       #if HAS_L64XX

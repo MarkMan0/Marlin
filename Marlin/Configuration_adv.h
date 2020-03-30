@@ -2338,6 +2338,15 @@
    */
   #define TMC_DEBUG
 
+  #define TMC_Z_CALIBRATION
+  #if ENABLED(TMC_Z_CALIBRATION)
+    #define TMC_Z_CURRENT     50
+    #define TMC_Z_EXTRA_HEIGHT  6
+    #define TMC_Z_POS {X_MIN_POS, Y_MIN_POS, -6}
+    #define TMC_Z_SPD_MOVE    100.0F
+    #define TMC_Z_SPD_SLOW    1.0F
+  #endif
+
   /**
    * You can set your own advanced settings by filling in predefined functions.
    * A list of available functions can be found on the library github page

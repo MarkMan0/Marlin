@@ -928,7 +928,9 @@ private:
     #if USE_SENSORLESS
       static void M914();
     #endif
+    #if ENABLED(TMC_Z_CALIBRATION)
       static void M915();
+    #endif
   #endif
 
   #if HAS_L64XX
