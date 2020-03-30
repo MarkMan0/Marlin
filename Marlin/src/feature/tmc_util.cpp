@@ -276,6 +276,7 @@
           #if ENABLED(REPORT_CURRENT_CHANGE)
             st.printLabel();
             SERIAL_ECHOLNPAIR(" current decreased to ", I_rms);
+            LCD_ALERTMESSAGEPGM_P(PSTR("driver Current decreased"));
           #endif
         }
       }
