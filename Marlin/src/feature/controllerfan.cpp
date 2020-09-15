@@ -75,7 +75,11 @@ void ControllerFan::update() {
     );
 
     // If any of the drivers or the heated bed are enabled...
-    if (motor_on || TERN0(HAS_HEATED_BED, thermalManager.temp_bed.soft_pwm_amount > 0))
+    if (motor_on || TERN0(HAS_HEATED_BED, thermalManager.temp_bed.soft_pwm_amount > 0)
+      #if ENABLED(CONTROLLER_FAN_IS_EXTRUDER_1_FAN)
+       || thermalManager.temp_hotend[0].celsius > EXTRUDER_AUTO_FAN_TEMPERATURE    //check if extruder heater is on
+      #endif
+      )
       lastMotorOn = ms; //... set time to NOW so the fan will turn on
 
     // Fan Settings. Set fan > 0:

@@ -26,10 +26,10 @@
 //
 // Trinamic Stallguard pins
 //
-#define X_DIAG_PIN                         P1_29  // X-
+#define E0_DIAG_PIN                         P1_29  // X-
 #define Y_DIAG_PIN                         P1_27  // Y-
 #define Z_DIAG_PIN                         P1_25  // Z-
-#define E0_DIAG_PIN                        P1_28  // X+
+#define X_DIAG_PIN                        P1_28  // X+
 #define E1_DIAG_PIN                        P1_26  // Y+
 
 //
@@ -97,11 +97,11 @@
 //
 // Steppers
 //
-#define X_STEP_PIN                         P2_02
-#define X_DIR_PIN                          P2_06
-#define X_ENABLE_PIN                       P2_01
-#ifndef X_CS_PIN
-  #define X_CS_PIN                         P1_17
+#define E0_STEP_PIN                         P2_02
+#define E0_DIR_PIN                          P2_06
+#define E0_ENABLE_PIN                       P2_01
+#ifndef E0_CS_PIN
+  #define E0_CS_PIN                         P1_17
 #endif
 
 #define Y_STEP_PIN                         P0_19
@@ -118,11 +118,11 @@
   #define Z_CS_PIN                         P1_10
 #endif
 
-#define E0_STEP_PIN                        P2_13
-#define E0_DIR_PIN                         P0_11
-#define E0_ENABLE_PIN                      P2_12
-#ifndef E0_CS_PIN
-  #define E0_CS_PIN                        P1_08
+#define X_STEP_PIN                        P2_13
+#define X_DIR_PIN                         P0_11
+#define X_ENABLE_PIN                      P2_12
+#ifndef X_CS_PIN
+  #define X_CS_PIN                        P1_08
 #endif
 
 #ifndef E1_CS_PIN
@@ -373,4 +373,8 @@
  */
 
 // Include common SKR pins
+
+#define HEATER_1_PIN -1
+#define CONTROLLER_FAN_PIN P2_04
+
 #include "pins_BTT_SKR_common.h"

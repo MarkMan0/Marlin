@@ -856,13 +856,27 @@ void Temperature::min_temp_error(const heater_ind_t heater) {
             pid_reset[ee] = false;
           }
 
-          work_pid[ee].Kd = work_pid[ee].Kd + PID_K2 * (PID_PARAM(Kd, ee) * (temp_dState[ee] - temp_hotend[ee].celsius) - work_pid[ee].Kd);
-          const float max_power_over_i_gain = float(PID_MAX) / PID_PARAM(Ki, ee) - float(MIN_POWER);
-          temp_iState[ee] = constrain(temp_iState[ee] + pid_error, 0, max_power_over_i_gain);
+          //work_pid[ee].Kd = work_pid[ee].Kd + PID_K2 * (PID_PARAM(Kd, ee) * (temp_dState[ee] - temp_hotend[ee].celsius) - work_pid[ee].Kd);
+          work_pid[ee].Kd = PID_K2 * PID_PARAM(Kd, ee) * (temp_hotend[ee].celsius - temp_dState[HOTEND_INDEX]) + float(PID_K1) * work_pid[ee].Kd ;
+          //const float max_power_over_i_gain = float(PID_MAX) / PID_PARAM(Ki, ee) - float(MIN_POWER);
+          temp_iState[ee] += pid_error;
           work_pid[ee].Kp = PID_PARAM(Kp, ee) * pid_error;
           work_pid[ee].Ki = PID_PARAM(Ki, ee) * temp_iState[ee];
 
-          pid_output = work_pid[ee].Kp + work_pid[ee].Ki + work_pid[ee].Kd + float(MIN_POWER);
+          pid_output = work_pid[ee].Kp + work_pid[ee].Ki - work_pid[ee].Kd + float(MIN_POWER);
+
+          if(pid_output > PID_MAX) {
+            if(pid_error > 0) {
+              temp_iState[ee] -= pid_error;
+            }
+            pid_output = PID_MAX;
+          }
+          else if(pid_output < 0) {
+            if(pid_error < 0) {
+              temp_iState[ee] -= pid_error;
+            }
+            pid_output = 0;
+          }
 
           #if ENABLED(PID_EXTRUSION_SCALING)
             #if HOTENDS == 1
