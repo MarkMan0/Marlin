@@ -1474,7 +1474,7 @@
 //
 #if ENABLED(TOUCH_UI_FTDI_EVE)
   // Display board used
-  //#define LCD_FTDI_VM800B35A        // FTDI 3.5" with FT800 (320x240)
+  #define LCD_FTDI_VM800B35A        // FTDI 3.5" with FT800 (320x240)
   //#define LCD_4DSYSTEMS_4DLCD_FT843 // 4D Systems 4.3" (480x272)
   //#define LCD_HAOYU_FT800CB         // Haoyu with 4.3" or 5" (480x272)
   //#define LCD_HAOYU_FT810CB         // Haoyu with 5" (800x480)
@@ -1493,19 +1493,33 @@
   //#define S6_TFT_PINMAP       // FYSETC S6 pin mapping
   //#define F6_TFT_PINMAP       // FYSETC F6 pin mapping
 
-  //#define OTHER_PIN_LAYOUT  // Define pins manually below
+  #define OTHER_PIN_LAYOUT  // Define pins manually below
   #if ENABLED(OTHER_PIN_LAYOUT)
+    /**********  EXP2 *********/
     // Pins for CS and MOD_RESET (PD) must be chosen
-    #define CLCD_MOD_RESET  9
-    #define CLCD_SPI_CS    10
+    #define CLCD_MOD_RESET  PG10
+    #define CLCD_SPI_CS    PB12
 
     // If using software SPI, specify pins for SCLK, MOSI, MISO
     //#define CLCD_USE_SOFT_SPI
     #if ENABLED(CLCD_USE_SOFT_SPI)
-      #define CLCD_SOFT_SPI_MOSI 11
-      #define CLCD_SOFT_SPI_MISO 12
-      #define CLCD_SOFT_SPI_SCLK 13
+      #define CLCD_SOFT_SPI_MOSI PB15
+      #define CLCD_SOFT_SPI_MISO PB14
+      #define CLCD_SOFT_SPI_SCLK PB13
     #endif
+
+     /**********  EXP1 *********/
+    // #define CLCD_MOD_RESET  PD11
+    // #define CLCD_SPI_CS    PD10
+
+    // // If using software SPI, specify pins for SCLK, MOSI, MISO
+    // #define CLCD_USE_SOFT_SPI
+    // #if ENABLED(CLCD_USE_SOFT_SPI)
+    //   #define CLCD_SOFT_SPI_MOSI PG3
+    //   #define CLCD_SOFT_SPI_MISO PG4
+    //   #define CLCD_SOFT_SPI_SCLK PA8
+    // #endif
+
   #endif
 
   // Display Orientation. An inverted (i.e. upside-down) display
@@ -1553,7 +1567,7 @@
   //#define TOUCH_UI_PASSCODE
 
   // Output extra debug info for Touch UI events
-  //#define TOUCH_UI_DEBUG
+  #define TOUCH_UI_DEBUG
 
   // Developer menu (accessed by touching "About Printer" copyright text)
   //#define TOUCH_UI_DEVELOPER_MENU
